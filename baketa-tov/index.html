@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>שאלון אפיון | בקטע טוב</title>
+<meta name="description" content="שאלון אפיון למיתוג ולשפה החזותית של בקטע טוב, ערוץ 14, עונה שנייה">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --band:#CBBAB8; --band-d:#B8A3A0; --paper:#FFFEFC; --box:#F0E7E2; --ink:#2F2624;
+  --accent:#6E5048; --muted:#7E6F6B; --line:#E6DBD6; --field:#FFFFFF; --ok:#5E7A5A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Heebo',Arial,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+/* progress */
+.progress{position:sticky;top:0;z-index:5;background:rgba(255,254,252,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.progress .wrap{display:flex;align-items:center;gap:12px;height:44px}
+.bar{flex:1;height:5px;background:var(--box);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.count{font-size:13px;color:var(--muted);white-space:nowrap}
+.count b{color:var(--accent);font-weight:700}
+
+/* hero */
+.hero{background:var(--band);color:#fff}
+.hero .wrap{padding-top:56px;padding-bottom:44px}
+.hero h1{margin:0;font-size:52px;line-height:1.05;font-weight:700}
+.hero .sub{font-size:20px;font-weight:300;margin-top:10px}
+.hero .meta{font-size:14px;margin-top:8px;opacity:.9}
+
+/* intro */
+.intro{padding:34px 0 8px}
+.intro h2{font-size:22px;margin:0 0 10px;font-weight:700}
+.intro p{margin:0 0 10px;font-size:16px;line-height:1.75}
+.card{background:var(--box);border-radius:8px;padding:18px 20px}
+.details{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 8px}
+
+/* sections */
+section.s{padding-top:34px}
+.sh{display:flex;align-items:baseline;gap:12px;padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.sh .n{font-size:22px;font-weight:700;color:var(--accent);letter-spacing:.03em}
+.sh h2{font-size:22px;font-weight:700;margin:0}
+.lead{font-size:15px;color:var(--muted);margin:-4px 0 18px;line-height:1.7}
+
+.q{margin-bottom:22px}
+.ql{display:flex;gap:8px;font-weight:500;font-size:16px;margin-bottom:8px;line-height:1.55}
+.qn{color:var(--accent);font-weight:700;flex:none;min-width:26px}
+.qh{font-size:14px;color:var(--muted);font-weight:300;margin:-4px 0 8px;padding-right:34px}
+.qi{padding-right:34px}
+label.sl{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+input[type=text],input[type=url],input[type=email],textarea{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--field);border:1px solid var(--line);
+  border-radius:6px;padding:10px 12px;outline:none;transition:border-color .15s, box-shadow .15s;direction:rtl}
+textarea{min-height:96px;resize:vertical;line-height:1.6;overflow:hidden}
+input:focus,textarea:focus{border-color:var(--band-d);box-shadow:0 0 0 3px rgba(203,186,184,.35)}
+input::placeholder,textarea::placeholder{color:#B9ABA7}
+.grid{display:grid;gap:10px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g5{grid-template-columns:repeat(5,1fr)}
+.tbl{display:grid;grid-template-columns:1fr 1.4fr;gap:8px 10px}
+.th{font-size:13px;color:var(--muted);font-weight:500}
+
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;background:var(--field);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+.checks label{display:flex;align-items:flex-start;gap:10px;font-size:15px;cursor:pointer;line-height:1.45}
+.checks input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+
+/* submit */
+.submit{margin:34px 0 20px}
+.thanks{background:var(--box);border-radius:8px;padding:22px 22px}
+.thanks h3{margin:0 0 6px;font-size:20px;color:var(--accent)}
+.thanks p{margin:0;font-size:15px;line-height:1.75}
+button{font:inherit;font-size:17px;font-weight:700;color:#fff;background:var(--accent);border:0;border-radius:8px;
+  padding:14px 34px;cursor:pointer;margin-top:18px;transition:opacity .15s}
+button:hover{opacity:.92}
+button:disabled{opacity:.55;cursor:default}
+.status{margin-top:12px;font-size:15px;min-height:24px}
+.status.err{color:#A0453A}
+.saved{font-size:13px;color:var(--muted);margin-top:8px}
+.done{display:none;text-align:center;padding:70px 0 90px}
+.done h2{font-size:30px;margin:0 0 10px;color:var(--accent)}
+.done p{font-size:17px;margin:0;color:var(--ink)}
+.hp{position:absolute;right:-9999px;width:1px;height:1px;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:18px 0 26px;font-size:13px;color:var(--muted)}
+
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .hero .wrap{padding-top:40px;padding-bottom:32px}
+  .hero h1{font-size:38px}
+  .hero .sub{font-size:17px}
+  .details{grid-template-columns:1fr}
+  .g5{grid-template-columns:1fr 1fr}
+  .g2{grid-template-columns:1fr}
+  .qi,.qh{padding-right:0}
+  .tbl{grid-template-columns:1fr}
+  .tbl .th{display:none}
+  .tbl .pair-b{margin-bottom:8px}
+  .checks{grid-template-columns:1fr}
+  button{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="wrap"><div class="bar"><i id="barFill"></i></div><div class="count">נענו <b id="cnt">0</b> מתוך 31</div></div></div>
+
+<header class="hero"><div class="wrap">
+  <h1>שאלון אפיון</h1>
+  <div class="sub">מיתוג ושפה חזותית</div>
+  <div class="meta">בקטע טוב &nbsp;|&nbsp; ערוץ 14 &nbsp;|&nbsp; עונה שנייה</div>
+</div></header>
+
+<main class="wrap">
+<form id="form" novalidate>
+  <div class="intro">
+    <h2>קצת לפני שמתחילים</h2>
+    <p>לקראת פיתוח הזהות החזותית החדשה של ״בקטע טוב״, נרצה להכיר את התוכנית לעומק, להבין מה מייחד אותה, מה חשוב לה להעביר ואיזו חוויה היא מבקשת ליצור עבור הצופים.</p>
+    <p>השאלון משלב שאלות על זהות, ערכים, קהל, תוכן וצרכים עיצוביים, לצד תרגיל קצר של אסוציאציות וחשיבה אינטואיטיבית.</p>
+    <p>התשובות ישמשו בסיס למחקר ולפיתוח שלושה כיוונים קריאייטיביים ראשוניים.</p>
+    <p>אין תשובות נכונות או לא נכונות. אפשר לענות בקצרה, באופן חופשי ואישי, גם אם חלק מהדברים עדיין לא מגובשים.</p>
+    <div class="details">
+      <div><label class="sl" for="d_name">שם הממלא/ת *</label><input type="text" id="d_name" name="שם הממלא/ת" required autocomplete="name"></div>
+      <div><label class="sl" for="d_role">תפקיד</label><input type="text" id="d_role" name="תפקיד"></div>
+      <div><label class="sl" for="d_mail">מייל</label><input type="email" id="d_mail" name="מייל" autocomplete="email" inputmode="email" dir="ltr" style="text-align:right"></div>
+    </div>
+  </div>
+  <div id="sections"></div>
+
+  <div class="submit">
+    <div class="thanks">
+      <h3>תודה על שיתוף הפעולה!</h3>
+      <p>התשובות יסייעו לנו לגבש בסיס מחקרי וקריאייטיבי לפיתוח זהות חזותית חדשה, מדויקת ומזוהה עבור ״בקטע טוב״.</p>
+    </div>
+    <div class="hp"><label>אל תמלאו<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+    <button type="submit" id="send">שליחת התשובות</button>
+    <div class="status" id="status" role="status"></div>
+    <div class="saved">התשובות נשמרות אוטומטית בדפדפן שלכם, אז אפשר לסגור ולחזור להשלים מאוחר יותר.</div>
+  </div>
+</form>
+
+<div class="done" id="done">
+  <h2>התשובות נשלחו, תודה!</h2>
+  <p>קיבלנו את הכול. נחזור אליכם עם המשך התהליך.</p>
+</div>
+</main>
+<footer><div class="wrap">בקטע טוב · שאלון אפיון | מיתוג ושפה חזותית · מעיין מרקוביץ</div></footer>
+
+<script>
+/* ===== settings ===== */
+// Where answers are sent (FormSubmit: emails every submission as a table). Set before publishing.
+const ENDPOINT = "https://formsubmit.co/ajax/669ab43fbe40d10dc3e2e4356c4f92f6";
+const CC = "maayan6309@gmail.com";
+const STORE_KEY = "baketa-tov-questionnaire-v1";
+
+/* ===== questions (Maayan's wording, verbatim) ===== */
+const SECTIONS = [
+ {n:"01", t:"מהות וזהות התוכנית", q:[
+  [1,"איך הייתם מתארים את ״בקטע טוב״ למישהו שלא מכיר את התוכנית?"],
+  [2,"מהם שלושת הערכים המרכזיים שמובילים את התוכנית?"],
+  [3,"מה לדעתכם הדבר שמייחד אותה ביחס לתוכניות אחרות?"],
+  [4,"מה עומד מאחורי השם ״בקטע טוב״, ומה הוא מסמל עבורכם?"]]},
+ {n:"02", t:"אסוציאציות וחיבורים אישיים",
+  lead:"בחלק הזה נרצה לצאת לרגע מההגדרות הרגילות ולגלות אילו דימויים, מחשבות ותחושות התוכנית מעוררת אצלכם. נסו לענות באופן אינטואיטיבי, בלי לחשוב יותר מדי.", q:[
+  [5,"כשאתם שומעים את השם ״בקטע טוב״, אילו שלוש מילים או אסוציאציות עולות לכם באופן מיידי?", {multi:["מילה 1","מילה 2","מילה 3"]}],
+  [6,"אם הייתם צריכים לתאר את התוכנית באמצעות דימוי, חפץ, מקום או תופעה, מה הייתם בוחרים ולמה?"],
+  [7,"איזה רגע, סיפור או מפגש מהתוכנית מייצג בעיניכם בצורה הטובה ביותר את המהות שלה?"],
+  [8,"אם ״בקטע טוב״ הייתה מקום שאפשר להיכנס אליו, איך הייתם מתארים את התחושה בו?"]]},
+ {n:"03", t:"מסרים וחוויית הצופה", q:[
+  [9,"מה המסר או התחושה המרכזיים שהייתם רוצים שהצופה ייקח איתו אחרי צפייה בתוכנית?"],
+  [10,"אם אדם נחשף לתוכנית בפעם הראשונה לכמה שניות בלבד, מה הדבר החשוב ביותר שהייתם רוצים שיבין או ירגיש לגביה?"]]},
+ {n:"04", t:"קהל היעד", q:[
+  [11,"מי קהל הצופים המרכזי של התוכנית כיום? האם קיימים נתונים או תובנות מהעונה הקודמת שיכולים לסייע לנו להכיר אותו?"],
+  [12,"האם יש קהל נוסף שהייתם רוצים להגיע אליו בעונה השנייה?"]]},
+ {n:"05", t:"אסף וניקול", q:[
+  [13,"מה מאפיין את הדינמיקה בין אסף וניקול, ומה הופך אותה לחלק ייחודי מהתוכנית?"],
+  [14,"האם יש משפטים, מחוות או רגעים שחוזרים בתוכנית ומזוהים במיוחד עם אסף וניקול?"],
+  [15,"עד כמה חשוב לכם שהזהות החזותית תתבסס על הנוכחות של אסף וניקול, לעומת יצירת זהות עצמאית לתוכנית?"]]},
+ {n:"06", t:"העונה החדשה", q:[
+  [16,"אילו שינויים צפויים בעונה השנייה מבחינת התוכן, מבנה התוכנית או האווירה?"],
+  [17,"מה השינוי המרכזי שהייתם רוצים ליצור באופן שבו התוכנית מוצגת ונתפסת?"],
+  [18,"מהן שתי המטרות החשובות ביותר שהמיתוג החדש צריך לשרת?", {hint:"לדוגמה: זיהוי מיידי, בידול, חיבור לקהל חדש, נראות מקצועית יותר או חיזוק הנוכחות בדיגיטל.", multi:["מטרה 1","מטרה 2"]}]]},
+ {n:"07", t:"סביבת התחרות ובידול", q:[
+  [19,"אילו תוכניות אתם רואים כמתחרות או כאלטרנטיבות ל״בקטע טוב״ מבחינת קהל היעד, התוכן או חוויית הצפייה?"],
+  [20,"מה לדעתכם עובד היטב בתוכניות האלה, ובמה הייתם רוצים ש״בקטע טוב״ תבלוט ותהיה שונה מהן?"]]},
+ {n:"08", t:"אופי ושפה חזותית", q:[
+  [21,"בחרו שלוש עד חמש מילים שמתארות את האופי והאווירה שהייתם רוצים שהתוכנית תשדר.", {multi:["מילה 1","מילה 2","מילה 3","מילה 4","מילה 5"]}],
+  [22,"האם יש תחושה, סגנון או אסוציאציה שחשוב לכם שהמיתוג החדש לא יעורר?"],
+  [23,"האם יש עולמות תוכן, הקשרים תרבותיים או מאפיינים שחשוב לכם שיבואו לידי ביטוי בזהות התוכנית?"],
+  [24,"האם יש תוכניות, מותגים או עיצובים שאתם מתחברים אליהם מבחינה חזותית? נשמח לקבל עד שלוש דוגמאות ולציין מה אהבתם בכל אחת.", {pairs:3}],
+  [25,"האם קיימות העדפות או מגבלות לגבי צבעים, סמלים או מאפיינים חזותיים מסוימים?"]]},
+ {n:"09", t:"תוכן, חשיפה והפצה", q:[
+  [26,"אילו סוגי תכנים ופינות מרכזיות צפויים להופיע בעונה החדשה? האם יש ביניהם הבדלים משמעותיים באופי או באווירה?"],
+  [27,"אילו קטעים מהעונה הקודמת עוררו את העניין או התגובות החזקות ביותר מצד הצופים, ככל שידוע לכם?"],
+  [28,"היכן הקהל נחשף כיום לתוכנית, ואילו ערוצי הפצה חשוב לכם במיוחד לחזק בעונה החדשה?"]]},
+ {n:"10", t:"שימושים ודרישות", q:[
+  [29,"באילו מקומות ופורמטים צפויה להופיע השפה החזותית החדשה?", {hint:"לדוגמה: מסכי אולפן, גרפיקה לשידור, פתיחים, מעברים, סרטונים לרשתות, תמונות ממוזערות וחומרים שיווקיים."}],
+  [30,"האם השפה החזותית מיועדת לעונה השנייה בלבד, או שחשוב שתוכל להתפתח וללוות גם עונות ופעילויות נוספות?"],
+  [31,"האם קיימות דרישות מצד הערוץ, מגבלות טכניות או החלטות שכבר התקבלו וחשוב להביא בחשבון בתהליך העיצוב?"]]},
+];
+const MATERIALS = ["קטעים מייצגים מהעונה הקודמת","נתוני צפייה ומאפייני קהל","דוגמאות לתכנים שזכו לחשיפה או לתגובות משמעותיות",
+  "חומרי מיתוג קיימים לצורכי מחקר והשוואה בלבד","דוגמאות והשראות חזותיות","הנחיות גרפיות וטכניות מטעם הערוץ"];
+
+/* ===== build ===== */
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad = n => String(n).padStart(2, "0");
+let html = "";
+for (const s of SECTIONS) {
+  html += `<section class="s"><div class="sh"><span class="n">${s.n}</span><h2>${s.t}</h2></div>`;
+  if (s.lead) html += `<p class="lead">${s.lead}</p>`;
+  for (const [n, text, o = {}] of s.q) {
+    const key = `${pad(n)}. ${text}`, id = `q${n}`;
+    html += `<div class="q" data-q="${n}"><div class="ql"><span class="qn">${n}.</span><label for="${id}${o.multi||o.pairs?'_1':''}">${text}</label></div>`;
+    if (o.hint) html += `<div class="qh">${o.hint}</div>`;
+    html += `<div class="qi">`;
+    if (o.multi) {
+      html += `<div class="grid g${o.multi.length}">` + o.multi.map((l, i) =>
+        `<div><label class="sl" for="${id}_${i+1}">${l}</label><input type="text" id="${id}_${i+1}" name="${esc(`${pad(n)}. ${l}`)}"></div>`).join("") + `</div>`;
+    } else if (o.pairs) {
+      html += `<div class="tbl"><div class="th">תוכנית / מותג / עיצוב</div><div class="th">מה אהבתם</div>`;
+      for (let i = 1; i <= o.pairs; i++)
+        html += `<input type="text" id="${id}_${i}" name="${pad(n)}. דוגמה ${i}" placeholder="דוגמה ${i}">` +
+                `<input type="text" class="pair-b" name="${pad(n)}. מה אהבתם בדוגמה ${i}" placeholder="מה אהבתם בדוגמה ${i}">`;
+      html += `</div>`;
+    } else {
+      html += `<textarea id="${id}" name="${esc(key)}" rows="3"></textarea>`;
+    }
+    html += `</div></div>`;
+  }
+  html += `</section>`;
+}
+html += `<section class="s"><div class="sh"><h2>חומרים שכדאי לצרף</h2></div>
+  <p class="lead">ככל שקיימים. סמנו מה יש לכם, והוסיפו קישור לתיקייה או לחומרים.</p>
+  <div class="q"><div class="checks">${MATERIALS.map((m, i) =>
+    `<label><input type="checkbox" name="חומרים מצורפים" value="${esc(m)}">${m}</label>`).join("")}</div></div>
+  <div class="q"><label class="sl" for="m_link">קישור לחומרים (דרייב, דרופבוקס, וי-טרנספר וכו׳)</label>
+    <input type="url" id="m_link" name="קישור לחומרים" inputmode="url" dir="ltr" style="text-align:right"></div>
+  <div class="q"><label class="sl" for="m_notes">הערות נוספות</label><textarea id="m_notes" name="הערות נוספות" rows="4"></textarea></div>
+</section>`;
+document.getElementById("sections").innerHTML = html;
+
+const form = document.getElementById("form");
+
+/* auto-grow textareas */
+const grow = t => { t.style.height = "auto"; t.style.height = Math.max(t.scrollHeight + 2, 96) + "px"; };
+form.querySelectorAll("textarea").forEach(t => t.addEventListener("input", () => grow(t)));
+
+/* progress: a question counts as answered when any of its inputs has text */
+function updateProgress() {
+  let done = 0;
+  form.querySelectorAll(".q[data-q]").forEach(q => {
+    if ([...q.querySelectorAll("input,textarea")].some(el => el.value.trim())) done++;
+  });
+  document.getElementById("cnt").textContent = done;
+  document.getElementById("barFill").style.width = (done / 31 * 100) + "%";
+}
+
+/* draft autosave (per browser only) */
+function save() {
+  try {
+    const data = {};
+    form.querySelectorAll("input,textarea").forEach((el, i) => {
+      if (el.name === "_honey") return;
+      data[i] = el.type === "checkbox" ? el.checked : el.value;
+    });
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  } catch (e) {}
+}
+function load() {
+  try {
+    const data = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+    if (!data) return;
+    form.querySelectorAll("input,textarea").forEach((el, i) => {
+      if (!(i in data)) return;
+      if (el.type === "checkbox") el.checked = !!data[i]; else el.value = data[i];
+    });
+  } catch (e) {}
+}
+load();
+form.querySelectorAll("textarea").forEach(grow);
+updateProgress();
+form.addEventListener("input", () => { updateProgress(); save(); });
+form.addEventListener("change", save);
+
+/* submit */
+const status = document.getElementById("status"), btn = document.getElementById("send");
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  status.className = "status"; status.textContent = "";
+  const name = document.getElementById("d_name");
+  if (!name.value.trim()) {
+    status.className = "status err"; status.textContent = "נא למלא שם בראש הטופס, כדי שנדע ממי התשובות.";
+    name.focus(); name.scrollIntoView({block: "center"}); return;
+  }
+  if (form.querySelector('[name="_honey"]').value) return;
+  const payload = {};
+  for (const [k, v] of new FormData(form)) {
+    if (k === "_honey" || !String(v).trim()) continue;
+    payload[k] = payload[k] ? payload[k] + ", " + v : v;
+  }
+  payload._subject = "שאלון אפיון בקטע טוב · תשובות מ" + name.value.trim();
+  payload._template = "table";
+  payload._captcha = "false";
+  payload._cc = CC;
+  if (!ENDPOINT) {
+    status.className = "status err"; status.textContent = "הטופס עוד לא מחובר לשליחה (גרסת בדיקה).";
+    console.log("payload", payload); return;
+  }
+  btn.disabled = true; btn.textContent = "שולח...";
+  try {
+    const r = await fetch(ENDPOINT, {method: "POST", headers: {"Content-Type": "application/json", "Accept": "application/json"},
+                                     body: JSON.stringify(payload)});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || String(j.success) === "false") throw new Error(j.message || r.status);
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+    form.style.display = "none";
+    document.querySelector(".progress").style.display = "none";
+    document.getElementById("done").style.display = "block";
+    window.scrollTo({top: 0});
+  } catch (err) {
+    btn.disabled = false; btn.textContent = "שליחת התשובות";
+    status.className = "status err";
+    status.textContent = "משהו השתבש בשליחה. התשובות שמורות, נסו שוב בעוד רגע.";
+  }
+});
+</script>
+</body>
+</html>
